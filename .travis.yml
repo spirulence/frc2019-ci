@@ -1,0 +1,8 @@
+language: minimal
+
+dist: xenial
+
+script: docker build
+
+services:
+  - docker

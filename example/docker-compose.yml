@@ -1,0 +1,12 @@
+version: '3'
+
+services:
+  robot:
+    build:
+      # path to the root of your robot code from here. in this example, this docker-compose file is one directory down
+      context: ../
+      # from the root of your robot code, the path to your Dockerfile.
+      dockerfile: example/Dockerfile
+    # ./gradlew test is the default command run to test your code
+    # you can change the default here by uncommenting and altering the below
+    # command: testing-command

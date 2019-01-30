@@ -1,0 +1,10 @@
+language: minimal
+
+dist: xenial
+
+install: docker-compose -f example/docker-compose.yml build
+
+script: docker-compose -f example/docker-compose.yml up
+
+services:
+  - docker
