@@ -15,10 +15,8 @@ ENV WPILIB_VERSION=2019.2.1 \
 RUN apt-get update -q && apt-get install -qy wget unzip
 
 # Download the WPILib release, untar it, and then delete the tar file to save space
-RUN mkdir /root/frc2019/ && cd /root/frc2019 \
-    && wget -q $WPILIB_RELEASE_URL/v$WPILIB_VERSION/WPILib_Linux-$WPILIB_VERSION.tar.gz \
-    # pull just the jdk and the offline maven dependencies - smaller resulting image
-    && tar -xzf WPILib_Linux-$WPILIB_VERSION.tar.gz  --wildcards 'jdk/*' 'maven/*' \
+RUN wget -q $WPILIB_RELEASE_URL/v$WPILIB_VERSION/WPILib_Linux-$WPILIB_VERSION.tar.gz \
+    && mkdir -p /root/frc2019/ && tar -xzf WPILib_Linux-$WPILIB_VERSION.tar.gz -C /root/frc2019/ \
     && rm WPILib_Linux-$WPILIB_VERSION.tar.gz
 
 # Download Gradle so that we don't need to download it again when we start the tests
